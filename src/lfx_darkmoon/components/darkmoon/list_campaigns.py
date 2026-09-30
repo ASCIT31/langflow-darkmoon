@@ -3,15 +3,17 @@ from __future__ import annotations
 from lfx.io import Output
 from lfx.schema.data import Data
 
-from ._base import DarkmoonComponentBase, connection_inputs
+from lfx.custom.custom_component.component import Component
+
+from lfx_darkmoon.components.darkmoon._base import DarkmoonClientMixin, connection_inputs
 
 
-class DarkmoonListCampaignsComponent(DarkmoonComponentBase):
+class DarkmoonListCampaignsComponent(DarkmoonClientMixin, Component):
     """Return the campaigns visible to the authenticated dashboard user."""
 
     display_name = "Darkmoon List Campaigns"
     description = "List the Darkmoon campaigns visible to the authenticated dashboard user."
-    icon = "darkmoon"
+    icon = "Shield"
     name = "DarkmoonListCampaigns"
 
     inputs = [*connection_inputs()]

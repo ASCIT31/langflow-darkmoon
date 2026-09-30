@@ -10,16 +10,16 @@ import sys
 
 import pytest
 
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "src"))
 
-import darkmoon._base as base  # noqa: E402
-from darkmoon import (  # noqa: E402
+import lfx_darkmoon.components.darkmoon._base as base  # noqa: E402
+from lfx_darkmoon.components.darkmoon import (  # noqa: E402
     DarkmoonGetFindingsComponent,
     DarkmoonListCampaignsComponent,
     DarkmoonListPullRequestsComponent,
     DarkmoonRunPentestComponent,
 )
-from darkmoon.darkmoon_client import DarkmoonClient, DarkmoonError, HttpResponse  # noqa: E402
+from lfx_darkmoon.components.darkmoon.darkmoon_client import DarkmoonClient, DarkmoonError, HttpResponse  # noqa: E402
 
 
 def make_client(routes, sink=None):

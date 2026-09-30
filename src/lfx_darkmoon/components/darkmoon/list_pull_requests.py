@@ -3,11 +3,13 @@ from __future__ import annotations
 from lfx.io import DropdownInput, MessageTextInput, Output
 from lfx.schema.data import Data
 
-from ._base import DarkmoonComponentBase, connection_inputs
-from .darkmoon_client import DarkmoonClient, PR_STATES
+from lfx.custom.custom_component.component import Component
+
+from lfx_darkmoon.components.darkmoon._base import DarkmoonClientMixin, connection_inputs
+from lfx_darkmoon.components.darkmoon.darkmoon_client import DarkmoonClient, PR_STATES
 
 
-class DarkmoonListPullRequestsComponent(DarkmoonComponentBase):
+class DarkmoonListPullRequestsComponent(DarkmoonClientMixin, Component):
     """Return the fix pull requests Darkmoon prepared (read-only).
 
     Pull requests are prepared by the paid Pro remediation feature and left for a
@@ -16,7 +18,7 @@ class DarkmoonListPullRequestsComponent(DarkmoonComponentBase):
 
     display_name = "Darkmoon List Pull Requests"
     description = "List the fix pull requests Darkmoon prepared (read-only)."
-    icon = "darkmoon"
+    icon = "Shield"
     name = "DarkmoonListPullRequests"
 
     inputs = [

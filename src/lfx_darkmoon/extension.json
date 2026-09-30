@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schemas.langflow.org/extension/v1.json",
+  "id": "lfx-darkmoon",
+  "version": "0.1.0",
+  "name": "Darkmoon",
+  "description": "Trigger a Darkmoon autonomous AI penetration test against an authorised target, pull findings, and review the fix pull requests Darkmoon prepares, over a self-hosted Darkmoon Dashboard API. Only assess systems you own or have explicit written authorisation to test; findings can include false positives and must be reviewed by a qualified human.",
+  "lfx": {
+    "compat": ["1"]
+  },
+  "capabilities": {
+    "requiresCredentials": true
+  },
+  "bundles": [
+    {
+      "name": "darkmoon",
+      "path": "components/darkmoon",
+      "display_name": "Darkmoon",
+      "icon": "Shield"
+    }
+  ]
+}

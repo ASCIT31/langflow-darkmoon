@@ -10,7 +10,7 @@ from __future__ import annotations
 
 from typing import Any, Dict
 
-from .darkmoon_client import DarkmoonClient, HttpResponse
+from lfx_darkmoon.components.darkmoon.darkmoon_client import DarkmoonClient, HttpResponse
 
 DEFAULT_TIMEOUT = 60
 
