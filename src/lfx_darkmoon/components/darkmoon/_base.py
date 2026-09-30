@@ -1,11 +1,10 @@
 """Shared connection inputs and client helper for the Darkmoon Langflow components."""
 from __future__ import annotations
 
-from lfx.custom import Component
 from lfx.io import SecretStrInput, StrInput
 
-from .darkmoon_client import DarkmoonClient
-from .transport import logged_in_client
+from lfx_darkmoon.components.darkmoon.darkmoon_client import DarkmoonClient
+from lfx_darkmoon.components.darkmoon.transport import logged_in_client
 
 
 def connection_inputs():
@@ -36,12 +35,17 @@ def connection_inputs():
     ]
 
 
-class DarkmoonComponentBase(Component):
-    """Base for Darkmoon components: builds an authenticated client per run.
+class DarkmoonClientMixin:
+    """Mixin that builds an authenticated Darkmoon client per run.
 
-    Tests monkeypatch :func:`logged_in_client` (imported into each component
-    module) to inject a mock-transport client, so component logic is exercised
-    without a network.
+    This is deliberately NOT a ``Component`` subclass: each concrete component
+    inherits ``(DarkmoonClientMixin, Component)`` so the extension validator
+    sees exactly the four real palette components and no abstract base without a
+    ``build()``/output method.
+
+    Tests monkeypatch :func:`logged_in_client` (a module global in this file) to
+    inject a mock-transport client, so component logic is exercised without a
+    network.
     """
 
     def _client(self) -> DarkmoonClient:

@@ -1,16 +1,12 @@
-[build-system]
-requires = ["setuptools>=68", "wheel"]
-build-backend = "setuptools.build_meta"
-
 [project]
-name = "langflow-darkmoon"
+name = "lfx-darkmoon"
 version = "0.1.0"
-description = "Langflow components for Darkmoon, the local privacy-first autonomous AI penetration testing engine."
+description = "Darkmoon components as a standalone Langflow Extension Bundle: run an authorised AI pentest, pull findings, and review the fix pull requests Darkmoon prepares."
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.10,<3.15"
 license = { text = "MIT" }
 authors = [{ name = "ASC-IT (Darkmoon)" }]
-keywords = ["langflow", "lfx", "darkmoon", "pentest", "security", "dast", "appsec", "ai-security"]
+keywords = ["langflow", "lfx", "extension", "bundle", "darkmoon", "pentest", "security", "dast", "appsec", "ai-security"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
@@ -18,8 +14,14 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Topic :: Security",
 ]
+
+# Runtime deps: lfx (the public BUNDLE_API surface these components are built
+# against) and requests (the HTTP transport). lfx is floored at the current
+# major.minor line and capped below the next lfx major; fine-grained BUNDLE_API
+# compatibility is enforced separately via extension.json's
+# "lfx": {"compat": ["1"]} contract against the running lfx's BUNDLE_API_VERSION.
 dependencies = [
-    "lfx>=0.1",
+    "lfx>=1.12.0,<2.0.0",
     "requests>=2.28",
 ]
 
@@ -28,11 +30,36 @@ test = ["pytest>=8"]
 
 [project.urls]
 Homepage = "https://github.com/ASCIT31/Dark-Moon"
+Documentation = "https://docs.langflow.org/extensions"
 Source = "https://github.com/ASCIT31/langflow-darkmoon"
 Issues = "https://github.com/ASCIT31/langflow-darkmoon/issues"
 
-[tool.setuptools]
-packages = ["darkmoon"]
+[build-system]
+requires = ["hatchling>=1.31.0"]
+build-backend = "hatchling.build"
 
-[tool.setuptools.package-data]
-darkmoon = ["*.svg"]
+# Manifest-shipping distributions are discovered via the ``langflow.extensions``
+# entry-point. The value is the dotted path to the package containing
+# ``extension.json``; the loader walks ``importlib.metadata.files()`` from
+# there to find the manifest, and falls back to this entry-point for editable
+# installs whose dist.files only surfaces dist-info entries.
+[project.entry-points."langflow.extensions"]
+lfx-darkmoon = "lfx_darkmoon"
+
+[tool.hatch.build.targets.wheel]
+# extension.json + components live inside the lfx_darkmoon package so
+# ``importlib.metadata.files(dist)`` finds them and the loader resolves
+# bundles[].path relative to the manifest's directory.
+packages = ["src/lfx_darkmoon"]
+include = [
+    "src/lfx_darkmoon/extension.json",
+    "src/lfx_darkmoon/components/**/*.py",
+    "src/lfx_darkmoon/components/**/*.svg",
+]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "src/lfx_darkmoon",
+    "README.md",
+    "pyproject.toml",
+]

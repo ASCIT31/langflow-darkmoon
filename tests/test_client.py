@@ -13,9 +13,9 @@ import sys
 
 import pytest
 
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "src"))
 
-from darkmoon.darkmoon_client import DarkmoonClient, DarkmoonError, HttpResponse  # noqa: E402
+from lfx_darkmoon.components.darkmoon.darkmoon_client import DarkmoonClient, DarkmoonError, HttpResponse  # noqa: E402
 
 
 def mock_http(routes, sink=None):

@@ -3,15 +3,17 @@ from __future__ import annotations
 from lfx.io import MessageTextInput, Output
 from lfx.schema.data import Data
 
-from ._base import DarkmoonComponentBase, connection_inputs
+from lfx.custom.custom_component.component import Component
+
+from lfx_darkmoon.components.darkmoon._base import DarkmoonClientMixin, connection_inputs
 
 
-class DarkmoonGetFindingsComponent(DarkmoonComponentBase):
+class DarkmoonGetFindingsComponent(DarkmoonClientMixin, Component):
     """Return the vulnerabilities and aggregated stats for a Darkmoon campaign."""
 
     display_name = "Darkmoon Get Findings"
     description = "Return the vulnerabilities and aggregated stats for a Darkmoon campaign id."
-    icon = "darkmoon"
+    icon = "Shield"
     name = "DarkmoonGetFindings"
 
     inputs = [
