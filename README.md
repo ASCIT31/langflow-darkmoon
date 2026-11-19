@@ -3,6 +3,9 @@
 [![Darkmoon](https://img.shields.io/badge/Darkmoon-autonomous%20pentest-4f46e5)](https://github.com/ASCIT31/Dark-Moon)
 [![Star Dark-Moon on GitHub](https://img.shields.io/github/stars/ASCIT31/Dark-Moon?style=social)](https://github.com/ASCIT31/Dark-Moon)
 
+> [!IMPORTANT]
+> **License change.** Darkmoon Community is moving from the GNU GPL v3.0 to the GNU AGPL v3.0. Every commit published up to `edfe9cb` (27 October 2026) stays under the GNU GPL v3.0, and the contributions made by outside contributors before the switch also stay under the GNU GPL v3.0 (they are not relicensed). Details: [LICENSING.md](https://github.com/ASCIT31/Dark-Moon/blob/master/LICENSING.md).
+
 A [Langflow](https://github.com/langflow-ai/langflow) **Extension Bundle** (distribution `lfx-darkmoon`) for **[Darkmoon](https://github.com/ASCIT31/Dark-Moon)**, the local, privacy first autonomous AI penetration testing engine (GPLv3). Drop these components into a Langflow flow to **trigger a Darkmoon pentest against a target you are authorised to assess, pull back the findings, and review the fix pull requests Darkmoon prepares**, over your own self-hosted Darkmoon Dashboard API.
 
 > Darkmoon runs and validates security tests. It does not, and these components do not, guarantee that a system is secure. Findings can include false positives and must be reviewed by a qualified human. Only run assessments against systems you own or have explicit written authorisation to test. These components never merge a pull request; every fix is left for a person to review and merge.
