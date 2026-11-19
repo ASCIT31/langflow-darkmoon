@@ -6,7 +6,7 @@
 > [!IMPORTANT]
 > **License change.** Darkmoon Community is moving from the GNU GPL v3.0 to the GNU AGPL v3.0. Every commit published up to `edfe9cb` (27 October 2026) stays under the GNU GPL v3.0, and the contributions made by outside contributors before the switch also stay under the GNU GPL v3.0 (they are not relicensed). Details: [LICENSING.md](https://github.com/ASCIT31/Dark-Moon/blob/master/LICENSING.md).
 
-A [Langflow](https://github.com/langflow-ai/langflow) **Extension Bundle** (distribution `lfx-darkmoon`) for **[Darkmoon](https://github.com/ASCIT31/Dark-Moon)**, the local, privacy first autonomous AI penetration testing engine (GPLv3). Drop these components into a Langflow flow to **trigger a Darkmoon pentest against a target you are authorised to assess, pull back the findings, and review the fix pull requests Darkmoon prepares**, over your own self-hosted Darkmoon Dashboard API.
+A [Langflow](https://github.com/langflow-ai/langflow) **Extension Bundle** (distribution `lfx-darkmoon`) for **[Darkmoon](https://github.com/ASCIT31/Dark-Moon)**, the local, privacy first autonomous AI penetration testing engine (AGPL-3.0). Drop these components into a Langflow flow to **trigger a Darkmoon pentest against a target you are authorised to assess, pull back the findings, and review the fix pull requests Darkmoon prepares**, over your own self-hosted Darkmoon Dashboard API.
 
 > Darkmoon runs and validates security tests. It does not, and these components do not, guarantee that a system is secure. Findings can include false positives and must be reviewed by a qualified human. Only run assessments against systems you own or have explicit written authorisation to test. These components never merge a pull request; every fix is left for a person to review and merge.
 
@@ -44,7 +44,7 @@ Darkmoon keeps assessment work on your own infrastructure and applies a privacy 
 
 ## Darkmoon at a glance
 
-Darkmoon is a GPLv3, self hosted autonomous AI pentester: an LLM orchestrates specialist agents and offensive tools over MCP, runs on a local model, and proves each finding with a real exploit. See [ASCIT31/Dark-Moon](https://github.com/ASCIT31/Dark-Moon).
+Darkmoon is an AGPL-3.0, self hosted autonomous AI pentester: an LLM orchestrates specialist agents and offensive tools over MCP, runs on a local model, and proves each finding with a real exploit. See [ASCIT31/Dark-Moon](https://github.com/ASCIT31/Dark-Moon).
 
 ## Layout
 
